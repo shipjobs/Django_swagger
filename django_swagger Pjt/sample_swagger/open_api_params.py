@@ -27,4 +27,3 @@ post_params = openapi.Schema(
         'y': openapi.Schema(type=openapi.TYPE_STRING, description='string'),
     }
 )
-
