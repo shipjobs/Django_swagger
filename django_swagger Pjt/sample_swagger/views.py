@@ -45,15 +45,15 @@ class TestView(APIView):
       
 #APIView를 상속받으면, get, post, put, delete 함수를 통해 CRUD를 간편하게 사용
 #Serializer를 활용해 코드를 작성하면 가독성이 좋아 직관적으로 의미를 이해할 수 있고 openapi를 활용하는 것에 비해 코드 길이 자체도 줄어드는 장점
-# class SerializerView(APIView):
-#     permission_classes = [permissions.AllowAny]
-#     @swagger_auto_schema()
-#     def get(self, request):
-#         return Response("SerializerView. Swagger 연동 테스트")
+class SerializerView(APIView):
+    permission_classes = [permissions.AllowAny]
+    @swagger_auto_schema()
+    def get(self, request):
+        return Response("SerializerView. Swagger 연동 테스트")
     
-#     @swagger_auto_schema()
-#     def post(self, request):
-#         return Response("SerializerView. Swagger Schema")
+    @swagger_auto_schema()
+    def post(self, request):
+        return Response("SerializerView. Swagger Schema")
 
 
 
