@@ -16,12 +16,22 @@ from .open_api_params import post_params
 #
 from rest_framework import viewsets
 from .serializers import ItemSerializer
-from .models import Item
+from .models import ItemModel
 
 # from .serializers import GetRequestSerializer
 # from .serializers import GetResponseSerializer
 
 # Create your views here.
+
+# Viewset 장점
+# queryset 사용으로 반복되는 CRUD 로직을 한번에 정의할 수 있음, ModelViewSet은 기본적으로 CRUD를 지원
+# Router를 사용함으로써, URL설정을 다룰 필요가 없음
+class ItemViewSet(viewsets.ModelViewSet):
+    queryset = ItemModel.objects.all() #ItemModel의 모든 객체를 가져옴
+    serializer_class = ItemSerializer
+    
+    
+    
 #APIView를 상속받으면, get, post, put, delete 함수를 통해 CRUD를 간편하게 사용 
 class TestView(APIView):
     permission_classes = [permissions.AllowAny]
@@ -61,11 +71,3 @@ class SerializerView(APIView):
         return Response("SerializerView. Swagger Schema")
 
 
-
-
-# Viewset 장점
-# queryset 사용으로 반복되는 CRUD 로직을 한번에 정의할 수 있음
-# Router를 사용함으로써, URL설정을 다룰 필요가 없음
-class ItemViewSet(viewsets.ModelViewSet):
-    queryset = Item.objects.all()
-    serializer_class = ItemSerializer

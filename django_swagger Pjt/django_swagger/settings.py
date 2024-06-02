@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
+# 생성한 api앱과 rest_framework를 추가해준다
 INSTALLED_APPS = [
     "rest_framework",
     "drf_yasg",
@@ -82,6 +83,8 @@ DATABASES = {
 }
 
 
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -104,9 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ko"     #"en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Seoul" #"UTC"
 
 USE_I18N = True
 

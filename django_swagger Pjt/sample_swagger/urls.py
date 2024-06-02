@@ -12,12 +12,15 @@ from . import views #views.py import
 
 # Create a router and register our viewsets with it.
 router = routers.DefaultRouter() #DefaultRouter를 설정
-router.register('Item', views.ItemViewSet) #itemviewset 과 item이라는 router 등록
+router.register('ItemModel', views.ItemViewSet) #itemviewset 과 itemModel 이라는 router 등록
 
+ 
 
 # The API URLs are now determined automatically by the router.
+# Additionally, we include the login URLs for the browsable API. (    )
 urlpatterns = [ 
             path('', include(router.urls)),
+
             path('v1/test/', TestView.as_view(), name='test'),
             path('v1/serializer/', SerializerView.as_view(), name='serializer'),
         ]
