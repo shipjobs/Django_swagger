@@ -12,7 +12,7 @@ from . import views #views.py import
 
 # Create a router and register our viewsets with it.
 router = routers.DefaultRouter() #DefaultRouter를 설정
-router.register('ItemModel', views.ItemViewSet) #itemviewset 과 itemModel 이라는 router 등록
+router.register('ItemModel_ItemViewSet', views.ItemViewSet) #itemviewset 과 itemModel 이라는 router 등록
 
  
 

@@ -18,10 +18,15 @@ from rest_framework import viewsets
 from .serializers import ItemSerializer
 from .models import ItemModel
 
-# from .serializers import GetRequestSerializer
-# from .serializers import GetResponseSerializer
+from .serializers import GetRequestSerializer
+from .serializers import GetResponseSerializer
+
+from .serializers import PostRequestSerializer
+from .serializers import PostResponseSerializer  
 
 # Create your views here.
+# Serialzers vs Openapi parameters 중 선택하여 + 사용하면 "Swagger" 연동하여 사용하면 된다. 
+#
 
 # Viewset 장점
 # queryset 사용으로 반복되는 CRUD 로직을 한번에 정의할 수 있음, ModelViewSet은 기본적으로 CRUD를 지원
@@ -29,7 +34,6 @@ from .models import ItemModel
 class ItemViewSet(viewsets.ModelViewSet):
     queryset = ItemModel.objects.all() #ItemModel의 모든 객체를 가져옴
     serializer_class = ItemSerializer
-    
     
     
 #APIView를 상속받으면, get, post, put, delete 함수를 통해 CRUD를 간편하게 사용 
@@ -44,30 +48,21 @@ class TestView(APIView):
     def post(self, request):
         return Response("TestView. Swagger Schema 입니다.")
       
-      
+     
 #manual_parameter 대신 query_serializer를 사용
-# class TestView(APIView):
-#     permission_classes = [permissions.AllowAny]
-    
-#     @swagger_auto_schema(query_serializer=GetRequestSerializer, responses={"200":GetResponseSerializer})
-#     def get(self, request):
-#         return Response("TestView. Swagger 연동 테스트 입니다.")
-    
-#     @swagger_auto_schema(manual_parameters=post_params)
-#     def post(self, request):
-#         return Response("TestView. Swagger Schema 입니다.")
+
       
       
 #APIView를 상속받으면, get, post, put, delete 함수를 통해 CRUD를 간편하게 사용
 #Serializer를 활용해 코드를 작성하면 가독성이 좋아 직관적으로 의미를 이해할 수 있고 openapi를 활용하는 것에 비해 코드 길이 자체도 줄어드는 장점
 class SerializerView(APIView):
     permission_classes = [permissions.AllowAny]
-    @swagger_auto_schema()
+    @swagger_auto_schema(query_serializer=GetRequestSerializer, responses={"200":GetResponseSerializer})
     def get(self, request):
-        return Response("SerializerView. Swagger 연동 테스트")
+        return Response("SerializerView. Swagger , GetRequest 연동 테스트")
     
-    @swagger_auto_schema()
+    @swagger_auto_schema(query_serializer=PostRequestSerializer, responses={"200":PostResponseSerializer})
     def post(self, request):
-        return Response("SerializerView. Swagger Schema")
+        return Response("SerializerView. Swagger , PostRequest 연동 테스트")
 
 

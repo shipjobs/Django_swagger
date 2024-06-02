@@ -3,7 +3,8 @@ from drf_yasg import openapi
 
 
 
-
+# Serialzers vs Openapi parameters
+#
 ##파라메터를 정의 
 get_params = [
 	openapi.Parameter(

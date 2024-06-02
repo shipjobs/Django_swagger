@@ -5,6 +5,7 @@ from rest_framework import serializers
 from .models import ItemModel
 
 #serialiezer란 장고 모델 데이터를 json타입으로 바꿔주는 작업 을 수행하는 Serializer.py 파일
+# Serialzers vs Openapi parameters 중 선택하여 사용하면 된다.
 # 설정한 models.py의 Item class를 import한다.
 # 설치한 rest_framework에서 serializers를 import한다.
 class ItemSerializer(serializers.ModelSerializer):
@@ -25,7 +26,7 @@ class ItemSerializer(serializers.ModelSerializer):
 #   'message': 'SUCCESS'
 # }
 
-reques ={
+request ={
     "school_name": "KNU",
     "student_list": [
         {
@@ -46,10 +47,11 @@ response = {
 
 ########
 # v1
-# - serializer
 # - test 
+# - serializer
 #######
 # v1/seializer/ getrequest  
+
 class GetRequestSerializer(serializers.Serializer):
     param1 = serializers.IntegerField()
     param2 = serializers.CharField(max_length=20)
@@ -61,6 +63,7 @@ class GetResponseSerializer(serializers.Serializer):
     status = serializers.CharField()
     message = serializers.CharField()
 
+
 # v1/test/ postrequest
 class PostRequestSerializer(serializers.Serializer):
     school_name = serializers.CharField()
@@ -71,4 +74,4 @@ class PostResponseSerializer(serializers.Serializer):
     status = serializers.CharField()
     message = serializers.CharField()
   
-    
+  
