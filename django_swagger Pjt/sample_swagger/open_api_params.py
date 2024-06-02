@@ -2,6 +2,8 @@
 from drf_yasg import openapi
 
 
+
+
 ##파라메터를 정의 
 get_params = [
 	openapi.Parameter(
@@ -27,3 +29,5 @@ post_params = openapi.Schema(
         'y': openapi.Schema(type=openapi.TYPE_STRING, description='string'),
     }
 )
+
+

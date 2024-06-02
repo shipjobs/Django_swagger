@@ -41,6 +41,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/', include(('sample_swagger.urls', 'api'))),
+    path('', include('sample_swagger.urls')), #sample_swagger/urls.py 를 사용
 ]
 
 # if settings.DEBUG:

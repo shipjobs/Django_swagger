@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "rest_framework",
     "drf_yasg",
+    "sample_swagger",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

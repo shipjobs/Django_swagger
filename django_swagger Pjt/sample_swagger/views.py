@@ -13,6 +13,11 @@ from drf_yasg.utils import swagger_auto_schema
 from .open_api_params import get_params
 from .open_api_params import post_params
 
+#
+from rest_framework import viewsets
+from .serializers import ItemSerializer
+from .models import Item
+
 # from .serializers import GetRequestSerializer
 # from .serializers import GetResponseSerializer
 
@@ -58,4 +63,9 @@ class SerializerView(APIView):
 
 
 
-
+# Viewset 장점
+# queryset 사용으로 반복되는 CRUD 로직을 한번에 정의할 수 있음
+# Router를 사용함으로써, URL설정을 다룰 필요가 없음
+class ItemViewSet(viewsets.ModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
